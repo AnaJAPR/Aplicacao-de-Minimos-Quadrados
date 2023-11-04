@@ -1,22 +1,20 @@
 import pandas as pd
+import matplotlib.pyplot as plt
 
 # Ler o arquivo CSV
-df = pd.read_excel('series_historicas.xlsx')
-
+df = pd.read_excel('planilha_brasil.xlsx')
+# Obter as datas do DataFrame
+datas = df.iloc[:, 0]
+# Converter as datas para o formato desejado
+datas_formatadas = datas.dt.strftime('%b/%y')
+# Substituir a primeira coluna pelas datas formatadas
+df.iloc[:, 0] = datas_formatadas
 print(df)
-'''
-# Transpor o DataFrame
-df_transposto = df.transpose()
 
-# Definir a primeira linha como cabeçalho
-df_transposto.columns = df_transposto.iloc[0]
+plt.scatter(df.iloc[:, 0], df.iloc[:, 1])
+# Adicionar rótulos
+plt.xlabel('Eixo X (Datas)')
+plt.ylabel('Eixo Y (Valores)')
 
-# Remover a primeira linha (que agora é o cabeçalho)
-df_transposto = df_transposto[1:]
-
-# Resetar os índices
-df_transposto = df_transposto.reset_index(drop=True)
-
-# Mostrar o DataFrame transposto
-print(df_transposto)
-'''
+# Exibir o gráfico
+plt.show()
