@@ -3,7 +3,7 @@ from bokeh.io import output_notebook
 from bokeh.models import ColumnDataSource
 import pandas as pd
 from bokeh.io.export import export_png
-
+'''
 # Ler o arquivo excel
 df = pd.read_excel('planilha_brasil.xlsx')
 
@@ -34,4 +34,5 @@ p.xaxis.major_label_orientation = 3.14 / 4
 
 # Mostrar o gráfico
 
-show(p)'''
+show(p)
+'''
