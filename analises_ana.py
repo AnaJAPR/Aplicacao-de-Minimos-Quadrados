@@ -10,19 +10,25 @@ from sklearn.linear_model import LinearRegression
 
 df = pd.read_csv("Sleep_Efficiency.csv").dropna()
 
-x = df["Sleep duration"].values.reshape(-1,1)
-y = df["Caffeine consumption"].values
+# x = df["Sleep efficiency"].values.reshape(-1,1)
+# y = df["Deep sleep percentage"].values
+
+x = df["Deep sleep percentage"].values.reshape(-1,1)
+y = df["Light sleep percentage"].values
+
+# x = df["Light sleep percentage"].values.reshape(-1,1)
+# y = df["Sleep efficiency"].values
 
 # creating a linear regression model and fitting the model to the data
 modelo = LinearRegression()
 modelo.fit(x,y)
 
-# defining coefficients
+# defining angular and linear coefficients
 a_coeff = modelo.coef_
 l_coeff = modelo.intercept_
 
-print(a_coeff)
-print(l_coeff)
+# print(a_coeff)
+# print(l_coeff)
 
 # y = a + b*x
 # y = l_coeff + a_coeff * x
@@ -31,10 +37,10 @@ print(l_coeff)
 # defining some characteristics of the graph
 plt.scatter(x,y)
 plt.plot(x, l_coeff + a_coeff*x, color='orange') # line representing linear regression
-plt.scatter(0, l_coeff + a_coeff*2.5, color='lightgreen', s = 20) 
+# plt.scatter(0, l_coeff + a_coeff*2.5, color='lightgreen', s = 20) 
 
 # This shows the graph
-# plt.show()
+plt.show()
 
 
 
