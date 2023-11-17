@@ -1,4 +1,5 @@
 import pandas as pd 
+import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.datasets import make_regression
 from sklearn.linear_model import LinearRegression
@@ -20,12 +21,12 @@ y = df["Light sleep percentage"].values
 # y = df["Sleep efficiency"].values
 
 # creating a linear regression model and fitting the model to the data
-modelo = LinearRegression()
-modelo.fit(x,y)
+# modelo = LinearRegression()
+# modelo.fit(x,y)
 
 # defining angular and linear coefficients
-a_coeff = modelo.coef_
-l_coeff = modelo.intercept_
+# a_coeff = modelo.coef_
+# l_coeff = modelo.intercept_
 
 # print(a_coeff)
 # print(l_coeff)
@@ -34,14 +35,28 @@ l_coeff = modelo.intercept_
 # y = l_coeff + a_coeff * x
 # print(y)
 
-# defining some characteristics of the graph
+# Adding a column of 1s to represent the linear term
+X = np.column_stack([np.ones_like(x), x])
+
+
+# Fitting the linear regression using matrix solution
+coefficients = np.linalg.inv(X.T @ X) @ X.T @ y
+print(X.shape)
+
+# Angular and linear coefficients
+l_coeff, a_coeff = coefficients
+
+# Printing the coefficients
+# print("Linear Coefficient:", l_coeff)
+# print("Angular Coefficient:", a_coeff)
+
+# Plotting
 plt.scatter(x,y)
-plt.plot(x, l_coeff + a_coeff*x, color='orange') # line representing linear regression
+plt.plot(x, l_coeff + a_coeff*x, color="orange") # line representing linear regression
 # plt.scatter(0, l_coeff + a_coeff*2.5, color='lightgreen', s = 20) 
 
 # This shows the graph
-plt.show()
-
+# plt.show()
 
 
 
