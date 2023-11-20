@@ -59,7 +59,11 @@ plt.plot(x, l_coeff + a_coeff*x, color="orange") # line representing linear regr
 # plt.show()
 
 
-
+# code just to check the data's concentration at the beginning of the graph 3
+x3 = df["VeryActiveMinutes"].values
+y3 = df["VeryActiveDistance"].values
+plt.gca().set_facecolor("#FFD79F")
+plt.boxplot([x3,y3]); # we use ";" to avoid printing the output
 
 
 
