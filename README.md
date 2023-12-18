@@ -1,4 +1,4 @@
-# Trabalho-A2-Algebra-Linear-2023-2
+# Aplicação de Mínimos Quadrados
 
 Trabalho referente à disciplina de Álgebra Linear do 2º semestre do nosso curso de Ciência de Dados e Inteligência Artificial. 
 
